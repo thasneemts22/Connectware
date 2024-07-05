@@ -1,0 +1,80 @@
+<!-- templates/report_details.html -->
+{% extends "student/base.html" %}
+{% block content %}
+
+{% load static %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Reports</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Program Title</th>
+                <th>Program Date</th>
+                <th>Prepared By</th>
+                <th>Summary</th>
+                <th>Additional Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for program in reports %}
+                <tr>
+                    <td>{{ program.program_title }}</td>
+                    <td>{{ program.program_date }}</td>
+                    <td>{{ program.prepared_by }}</td>
+                    <td>{{ program.summary }}</td>
+                    <td>{{ program.additional_comments }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock  %}

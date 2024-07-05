@@ -1,0 +1,79 @@
+<!-- events.html -->
+{% extends "student/base.html" %}
+{% block content %}
+
+{% load static %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;  /* Center the heading */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color:  #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Events</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Chief Guest</th>
+                <th>Objective</th>
+                <th>Venue</th>
+                <th>Audience</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.event_date }}</td>
+                    <td>{{ event.chief_guest }}</td>
+                    <td>{{ event.objective }}</td>
+                    <td>{{ event.venue }}</td>
+                    <td>{{ event.audience }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+{% endblock  %}
